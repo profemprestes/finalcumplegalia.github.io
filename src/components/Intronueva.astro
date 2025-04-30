@@ -1,0 +1,42 @@
+---
+import "../styles/intro.css";
+---
+
+<div class="intro-section">
+  <div class="intro-container" id="intro-container">
+    <div class="confetti-container" id="confetti-container"></div>
+
+    <div class="birthday-card" id="birthday-card">
+
+      <h1 class="birthday-title">¡Galia cumple 1 año!</h1>
+      <div class="welcome-message">¡Bienvenidos a la aventura de Galia!</div>
+
+      <div class="gallery">
+        <div class="gallery-item">
+          <div class="image-container" id="galia-image">
+            <img src="/GaliaHero.svg" alt="Galia" class="hero-image" />
+          </div>
+        </div>
+      </div>
+
+
+
+      <p class="instruction-text">(Haz clic para ver los detalles)</p>
+
+      <button
+        onclick="window.location.href='/inicialnueva'"
+        class="continue-btn"
+        id="continue-btn"
+      >
+        Continuar
+        <span class="button-decoration">
+          <img
+            src="/icons/send-horizontal.svg"
+            alt="Continuar"
+            class="button-icon"
+          />
+        </span>
+      </button>
+    </div>
+  </div>
+</div>

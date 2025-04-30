@@ -1,0 +1,156 @@
+
+=== astro.config.mjs ===
+
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+import compress from 'astro-compress';
+import sitemap from '@astrojs/sitemap';
+
+export default defineConfig({
+  output: 'server',
+  integrations: [
+    tailwind(),
+    compress(),
+    sitemap()
+  ],
+  redirects: {
+    '/': '/carga'
+  },
+  image: {
+    domains: ['astro', 'localhost'],
+    service: {
+      entrypoint: 'astro/assets/services/sharp'
+    }
+  }
+});
+
+
+=== tailwind.config.js ===
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    './src/**/*.{astro,html,js,ts,jsx,tsx}',
+    './src/styles/**/*.css'
+  ],
+  theme: {
+    extend: {
+      colors: {
+        'primary-color': '#ccd5ae',
+        'secondary-color': '#fefae0',
+        'accent-color': '#d4a373',
+        'text-color': '#5a3d2b'
+      },
+      fontFamily: {
+        sans: ['"Inter"', 'sans-serif']
+      }
+    }
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+    require('tailwind-scrollbar')
+  ]
+};
+
+
+=== package.json ===
+
+{
+  "name": "cumplegalia01",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "format": "prettier --write .",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.7.10",
+    "particles.js": "^2.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/sitemap": "^3.3.1",
+    "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "astro-compress": "^2.3.8",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "prettier": "^3.5.3",
+    "tailwind-scrollbar": "^4.0.2",
+    "tailwindcss": "^3.4.1"
+  }
+}
+
+
+=== tsconfig.json ===
+
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@styles/*": ["src/styles/*"],
+      "@assets/*": ["src/assets/*"]
+    }
+  },
+  "include": [".astro/types.d.ts", "src", "astro.config.mjs"],
+  "exclude": ["dist", "node_modules"]
+}
+
+
+=== Estructura de directorios ===
+
+
+.astro/
+  .astro/
+    content-assets.mjs
+    content-modules.mjs
+    content.d.ts
+    data-store.json
+    settings.json
+    types.d.ts
+    collections/
+
+src/
+  src/
+    assets/
+      astro.svg
+      background.svg
+    components/
+      Carga.astro
+      Countdown.astro
+      Hero.astro
+      Intro.astro
+      Intronueva.astro
+      Particles.astro
+      Principal.astro
+    js/
+      countdown.js
+      particles.js
+    layouts/
+      Layout.astro
+    pages/
+      carga.astro
+      introdu.astro
+      intronueva.astro
+      paginainicio copy.astro
+      paginainicio.astro
+    styles/
+      carga.css
+      carga2.css
+      countdown.css
+      global.css
+      hero.css
+      intro.css
+      intronueva.css
+      particles.css
+      particlesintro.css
+      principal.css

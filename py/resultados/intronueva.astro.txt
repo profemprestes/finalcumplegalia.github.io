@@ -1,0 +1,51 @@
+---
+import '../styles/carga.css';
+import '../styles/intronueva.css';
+---
+
+<!-- Elemento de fondo de partículas -->
+<div id="particles-js" aria-hidden="true"></div>
+      
+<!-- Contenedor principal de la introducción -->
+<div class="intro-container" id="intro-container">
+    <!-- Contenedor de confeti -->
+    <div class="confetti-container" id="confetti-container"></div>
+    
+    <!-- Tarjeta de cumpleaños con múltiples animaciones -->
+    <div class="birthday-card animate__animated animate__fadeIn animate__slower" id="birthday-card">
+        <!-- Cinta decorativa -->
+        <div class="ribbon"></div>
+        
+        <!-- Título animado -->
+        <h1 class="animate__animated animate__bounceInDown animate__delay-1s">¡Galia cumple 1 año!</h1>
+        
+        <!-- Mensaje de bienvenida -->
+        <div class="welcome-message animate__animated animate__fadeInUp animate__delay-2s">
+            ¡Bienvenidos a la aventura de Galia!
+        </div>
+
+        <!-- Galería con animaciones -->
+        <div class="gallery animate__animated animate__fadeIn animate__delay-2s">
+            <div class="gallery-item animate__animated animate__zoomIn animate__delay-3s">
+                <div class="image-container floating" id="galia-image">
+                    <img src="/GaliaHero.svg" alt="Galia" class="hero-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenedor de globos -->
+        <div class="balloon-container">
+            <div class="balloon balloon-left animate__animated animate__bounceInUp animate__delay-3s floating"></div>
+            <div class="balloon balloon-right animate__animated animate__bounceInUp animate__delay-3s floating"></div>
+            <div class="balloon balloon-center animate__animated animate__bounceInUp animate__delay-4s floating"></div>
+        </div>
+
+        <!-- Botón de continuación -->
+        <button onclick="window.location.href='/'" class="continue-btn animate__animated animate__pulse animate__infinite animate__delay-5s" id="continue-btn">
+            Continuar
+            <span class="button-decoration">
+                <img src="/icons/send-horizontal.svg" alt="Continuar" class="button-icon">
+            </span>
+        </button>
+    </div>
+</div>

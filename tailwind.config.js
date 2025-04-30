@@ -1,8 +1,13 @@
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    './src/**/*.{astro,html,js,ts,jsx,tsx}',
+    './src/styles/**/*.css'
+  ],
   theme: {
     extend: {
       colors: {
-        'tea-green': {
+        'tea_green': {
           DEFAULT: '#ccd5ae',
           100: '#2d331a',
           200: '#5b6635',
@@ -38,7 +43,7 @@ module.exports = {
           800: '#fffdf3',
           900: '#fffef9'
         },
-        'papaya-whip': {
+        'papaya_whip': {
           DEFAULT: '#faedcd',
           100: '#533e08',
           200: '#a57b10',
@@ -62,7 +67,16 @@ module.exports = {
           800: '#eedac7',
           900: '#f6ede3'
         }
+      },
+      fontFamily: {
+        sans: ['"Inter"', 'sans-serif']
       }
     }
-  }
-}
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+    require('tailwind-scrollbar')
+  ]
+};

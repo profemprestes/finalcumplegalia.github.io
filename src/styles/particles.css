@@ -9,16 +9,13 @@ canvas {
 }
 
 #particles-js {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
-    background-color: var(--tea-green);
-    background-image: url("");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-    z-index: -1;
-}
+    background-color: transparent;
+    z-index: 1;
+    pointer-events: none;
+  }
 
 .loader-container {
     position: fixed;
@@ -125,10 +122,11 @@ p {
     100% { transform: rotate(360deg); }
 }
 
+/* Optimización de animaciones */
 @keyframes float {
-    0% { transform: translate(-50%, -50%) translateY(0); }
-    100% { transform: translate(-50%, -50%) translateY(-20px); }
-}
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
 
 p {
     margin-top: 20px;
@@ -136,3 +134,20 @@ p {
     z-index: 20;
 }
 
+/* Simplificación de estilos */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    z-index: 1000;
+  }
+  
+  /* Mejora de rendimiento para animaciones */
+  .spinning-daisy {
+    will-change: transform;
+    backface-visibility: hidden;
+  }

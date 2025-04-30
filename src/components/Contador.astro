@@ -1,8 +1,7 @@
 ---
-import '../styles/countdown.css';
+import '../styles/contador.css';
 ---
-
-<section class="countdown" id="countdown" role="region" aria-labelledby="countdown-title">
+<section class="countdown" id="countdown" role="region" aria-labelledby="countdown-title" style="position: relative; z-index: 10;">
   <div class="countdown__info">
     <div class="countdown__header">
       <h2 class="countdown__title" id="countdown-title">¡La cuenta regresiva ha comenzado!</h2>
@@ -12,12 +11,6 @@ import '../styles/countdown.css';
         <div class="countdown__line"></div>
       </div>
     </div>
-
-    <p class="countdown__text">
-      Faltan solo unos instantes para una tarde mágica llena de juegos, risas y mucha diversión
-      <span class="countdown__emoji">🎉</span>
-    </p>
-
     <div class="countdown__timer" role="timer" aria-live="polite">
       <div class="countdown__item">
         <div class="countdown__card">
@@ -47,15 +40,6 @@ import '../styles/countdown.css';
         <span class="countdown__label">Segundos</span>
       </div>
     </div>
-
-    <button class="countdown__cta" onclick="scrollTo('principal')" role="button" tabindex="0" aria-label="Ir a la información del evento">
-      <div class="countdown__cta-content">
-        <p class="countdown__cta-text">¡Sigue bajando para descubrir más sobre esta gran aventura!</p>
-        <div class="countdown__cta-arrow">
-          <i class="bi bi-arrow-down-circle-fill countdown__cta-icon" aria-hidden="true"></i>
-        </div>
-      </div>
-    </button>
   </div>
 
   <div class="countdown__message" id="countdown-message" style="display:none;">
