@@ -1,0 +1,124 @@
+---
+import '../styles/countdown.css';
+---
+<section id="countdown" class="countdown" role="region" aria-labelledby="countdown-title">
+    <div class="countdown-info animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="countdown-header">
+            <h2 id="countdown-title" class="countdown-info-title">¡La cuenta regresiva ha comenzado!</h2>
+            <div class="countdown-decoration">
+                <div class="decoration-line"></div>
+                <div class="decoration-star"></div>
+                <div class="decoration-line"></div>
+            </div>
+        </div>
+        
+        <p class="countdown-info-text">
+            Faltan solo unos instantes para una tarde mágica llena de juegos, risas y mucha diversión 
+            <span class="emoji-float">🎉</span>
+        </p>
+
+        <div class="countdown-container" role="timer" aria-live="polite">
+            <div class="countdown-item">
+                <div class="countdown-card">
+                    <span id="countdown-days" class="countdown-number">00</span>
+                </div>
+                <span class="countdown-label">Días</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-item">
+                <div class="countdown-card">
+                    <span id="countdown-hours" class="countdown-number">00</span>
+                </div>
+                <span class="countdown-label">Horas</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-item">
+                <div class="countdown-card">
+                    <span id="countdown-minutes" class="countdown-number">00</span>
+                </div>
+                <span class="countdown-label">Minutos</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-item">
+                <div class="countdown-card">
+                    <span id="countdown-seconds" class="countdown-number">00</span>
+                </div>
+                <span class="countdown-label">Segundos</span>
+            </div>
+        </div>
+
+        <div class="countdown-info-cta" onclick="scrollTo('principal')" role="button" tabindex="0" aria-label="Ir a la información del evento">
+            <div class="cta-content">
+                <p>¡Sigue bajando para descubrir más sobre esta gran aventura!</p>
+                <div class="arrow-container">
+                    <i class="bi bi-arrow-down-circle-fill bounce-icon" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="countdown-message" class="countdown-message" style="display:none;">
+        <h3>¡Ya empezó la fiesta!</h3>
+        <div class="party-emoji">🎈🎊🎉</div>
+    </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const EVENT_DATE: Date = new Date('2025-05-10T13:00:00-03:00');
+    const elements: Record<string, HTMLElement | null> = {
+        days: document.getElementById('countdown-days'),
+        hours: document.getElementById('countdown-hours'),
+        minutes: document.getElementById('countdown-minutes'),
+        seconds: document.getElementById('countdown-seconds')
+    };
+    const container: HTMLElement | null = document.querySelector('.countdown-container');
+    const messageElement: HTMLElement | null = document.getElementById('countdown-message');
+
+    interface TimeRemaining {
+        expired: boolean;
+        days?: number;
+        hours?: number;
+        minutes?: number;
+        seconds?: number;
+    }
+
+    function getTimeRemaining(): TimeRemaining {
+        const now: Date = new Date();
+        const diff: number = EVENT_DATE.getTime() - now.getTime();
+
+        if (diff < 0) return { expired: true };
+        return {
+            expired: false,
+            days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((diff / (1000 * 60)) % 60),
+            seconds: Math.floor((diff / 1000) % 60)
+        };
+    }
+
+    function updateCountdown(): void {
+        const time: TimeRemaining = getTimeRemaining();
+        if (time.expired && container && messageElement) {
+            container.style.display = 'none';
+            messageElement.style.display = 'block';
+            return;
+        }
+
+        Object.entries(elements).forEach(([key, el]) => {
+            if (el && time[key as keyof TimeRemaining]) {
+                el.textContent = String(time[key as keyof TimeRemaining]).padStart(2, '0');
+            }
+        });
+    }
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+
+    window.addEventListener('beforeunload', () => clearInterval(interval));
+  });
+
+  function scrollTo(sectionId: string): void {
+    const section = document.getElementById(sectionId);
+    if (section) section.scrollIntoView({ behavior: 'smooth' });
+  }
+</script>

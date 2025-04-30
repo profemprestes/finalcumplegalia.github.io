@@ -1,0 +1,84 @@
+---
+import '../styles/principal.css';
+---
+<main id="principal" class="principal">
+    <div class="principal-container">
+        <!-- Details Card -->
+        <div class="principal-card detalles-card animate__animated animate__fadeInUp">
+            <div class="card-header">
+                <h3>Detalles de la Fiesta</h3>
+                <div class="card-decoration">
+                    <div class="decoration-line"></div>
+                    <div class="decoration-star"></div>
+                    <div class="decoration-line"></div>
+                </div>
+            </div>
+            <div class="detalles-content">
+                <div class="detalle-item">
+                    <div class="icon-wrapper">
+                        <i class="bi bi-calendar-heart" aria-hidden="true"></i>
+                    </div>
+                    <span>Sábado 10 de mayo de 2025</span>
+                </div>
+                <div class="detalle-item">
+                    <div class="icon-wrapper">
+                        <i class="bi bi-clock-fill" aria-hidden="true"></i>
+                    </div>
+                    <span>13:00 a 18:00 hs</span>
+                </div>
+                <div class="detalle-item">
+                    <div class="icon-wrapper">
+                        <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                    </div>
+                    <span>Club Ciclista Juanicó</span>
+                </div>
+                <p class="detalle-mensaje animate__animated animate__pulse animate__infinite">
+                    ¡Prepárate para una tarde mágica! 
+                    <span class="emoji-float">✨</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Location Card -->
+        <div class="principal-card ubicacion-card animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="card-header">
+                <h3>¿Dónde nos encontramos?</h3>
+                <div class="card-decoration">
+                    <div class="decoration-line"></div>
+                    <div class="decoration-star"></div>
+                    <div class="decoration-line"></div>
+                </div>
+            </div>
+            <div class="ubicacion-content">
+                <div class="mapa-container">
+                    <img src="public/mapa-placeholder.jpg" alt="Ubicación Club Ciclista Juanicó" loading="lazy">
+                    <div class="mapa-overlay"></div>
+                </div>
+                <button class="ubicacion-btn" onclick="utils.openGoogleMaps()">
+                    <i class="bi bi-map" aria-hidden="true"></i>
+                    Ver en Google Maps
+                </button>
+            </div>
+        </div>
+
+        <!-- Confirmation Card -->
+        <div class="principal-card confirmacion-card animate__animated animate__fadeInUp animate__delay-2s">
+            <div class="card-header">
+                <h3>Confirmar Asistencia</h3>
+                <div class="card-decoration">
+                    <div class="decoration-line"></div>
+                    <div class="decoration-star"></div>
+                    <div class="decoration-line"></div>
+                </div>
+            </div>
+            <div class="confirmacion-content">
+                <p class="confirmacion-text">¡Queremos verte allí!</p>
+                <p class="confirmacion-subtext">Confírmanos tu asistencia por WhatsApp</p>
+                <button onclick="openWhatsAppConfirmation()" class="whatsapp-btn">
+                    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                    Confirmar Asistencia
+                </button>
+            </div>
+        </div>
+    </div>
+</main>

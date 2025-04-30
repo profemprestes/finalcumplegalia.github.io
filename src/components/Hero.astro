@@ -1,0 +1,52 @@
+---
+import '../styles/hero.css';
+---
+<section id="hero-main" class="hero-section" aria-labelledby="hero-title">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-card animate__animated animate__fadeIn">
+      <div class="hero-image-wrapper animate__animated animate__zoomIn">
+        <div class="hero-image">
+          <img src="/GaliaHero.svg" alt="Galia en su primer cumpleaños" loading="lazy">
+          <div class="hero-image-decor" aria-hidden="true"></div>
+        </div>
+        <div class="sparkles">
+          <div class="sparkle sparkle-1"></div>
+          <div class="sparkle sparkle-2"></div>
+          <div class="sparkle sparkle-3"></div>
+        </div>
+      </div>
+      
+      <div class="hero-text-container">
+        <h2 class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">¡Acompáñame a celebrar!</h2>
+        <h1 id="hero-title" class="animate__animated animate__fadeInUp animate__delay-1s">Mi primer añito ¡Galia!</h1>
+        
+        <div class="hero-details-wrapper animate__animated animate__fadeIn animate__delay-2s">
+          <button class="hero-detail-item" onclick="window.open('https://maps.google.com/?q=Club+Ciclista+Juanicó')" aria-label="Ver ubicación del evento">
+            <i class="bi bi-geo-alt" aria-hidden="true"></i>
+            <span>Club Ciclista Juanicó</span>
+          </button>
+          
+          <div class="hero-detail-separator" aria-hidden="true"></div>
+          
+          <button class="hero-detail-item" onclick="window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cumpleaños de Galia&dates=20250510T160000Z/20250510T210000Z&details=¡Celebremos el primer añito de Galia!&location=Club Ciclista Juanicó')" aria-label="Agregar al calendario">
+            <i class="bi bi-calendar-check" aria-hidden="true"></i>
+            <span>Sábado 10 de mayo de 2025</span>
+          </button>
+          
+          <div class="hero-detail-separator" aria-hidden="true"></div>
+          
+          <div class="hero-detail-item" aria-label="Hora del evento">
+            <i class="bi bi-clock" aria-hidden="true"></i>
+            <span>13:00 a 18:00 hs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <button class="scroll-indicator animate__animated animate__fadeInUp animate__delay-3s" onclick="document.getElementById('countdown').scrollIntoView({behavior: 'smooth'})" aria-label="Ir a la cuenta regresiva">
+      <span>Descubre más</span>
+      <i class="bi bi-chevron-double-down" aria-hidden="true"></i>
+    </button>
+  </div>
+</section>

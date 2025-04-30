@@ -1,0 +1,42 @@
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+
+:root {
+  --tea-green: #ccd5ae;
+  --beige: #e9edc9;
+  --cornsilk: #fefae0;
+  --papaya-whip: #faedcd;
+  --buff: #d4a373;
+}
+
+/* Base styles */
+body {
+  background-color: var(--cornsilk);
+  color: var(--buff);
+  font-family: 'Nunito', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Baloo 2', cursive;
+  color: var(--buff);
+}
+
+/* Component styles */
+.btn-primary {
+  background-color: var(--buff);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--buff) 85%, black);
+}
+
+.card {
+  background-color: var(--papaya-whip);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}

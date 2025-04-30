@@ -1,0 +1,28 @@
+---
+import '../styles/carga.css'
+---
+<div id="particles-js" aria-hidden="true"></div>
+        
+<div class="loading-container animate__animated animate__fadeIn">
+    <div class="flower-spinner">
+        <img src="/daisy.svg" alt="Flor girando" aria-label="Flor girando" class="flower-spin">
+    </div>
+    <p class="loading-text animate__animated animate__pulse animate__infinite" aria-live="polite">
+        Cargando la Invitación de <span class="highlight">Galia</span>
+    </p>
+</div>
+
+<script>
+    // Redirección después de 2 segundos
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const loadingContainer = document.querySelector('.loading-container');
+            if (loadingContainer) {
+                loadingContainer.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = '/introdu';
+                }, 1000);
+            }
+        }, 2000);
+    });
+</script>

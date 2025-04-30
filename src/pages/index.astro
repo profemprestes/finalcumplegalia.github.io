@@ -1,11 +1,14 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Hero from '../components/Hero.astro';
+import Countdown from '../components/Countdown.astro';
+import Principal from '../components/Principal.astro';
+import Particles from '../components/Particles.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Galia cumple 1 año! | Bienvenida">
+    <Particles message="Fondo de partículas" />
+    <Hero message="¡Bienvenidos a mi primer añito!" />
+    <Countdown message="¡La cuenta regresiva ha comenzado!" />
+    <Principal message="¡Prepárate para una tarde mágica!" />
 </Layout>

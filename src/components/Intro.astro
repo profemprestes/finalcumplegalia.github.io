@@ -1,0 +1,60 @@
+---
+import '../styles/intro.css';
+import Particles from '../components/Particles.astro';
+---
+
+<Particles message="Fondo de partículas" />
+
+<div class="intro-container" id="intro-container">
+    <div class="confetti-container" id="confetti-container"></div>
+    
+    <div class="birthday-card animate__animated animate__fadeIn animate__slower" id="birthday-card">
+        <div class="card-decoration top-left"></div>
+        <div class="card-decoration top-right"></div>
+        <div class="card-decoration bottom-left"></div>
+        <div class="card-decoration bottom-right"></div>
+        
+        <div class="ribbon"></div>
+        
+        <h1 class="animate__animated animate__bounceInDown animate__delay-1s">¡Galia cumple 1 año!</h1>
+        
+        <div class="welcome-message animate__animated animate__fadeInUp animate__delay-2s">
+            ¡Bienvenidos a la aventura de Galia!
+            <div class="stars-container">
+                <div class="star star-1"></div>
+                <div class="star star-2"></div>
+                <div class="star star-3"></div>
+            </div>
+        </div>
+
+        <div class="gallery animate__animated animate__fadeIn animate__delay-2s">
+            <div class="gallery-item animate__animated animate__zoomIn animate__delay-3s">
+                <div class="image-container floating" id="galia-image">
+                    <img src="/GaliaHero.svg" alt="Galia" class="hero-image">
+                    <div class="sparkle sparkle-1"></div>
+                    <div class="sparkle sparkle-2"></div>
+                    <div class="sparkle sparkle-3"></div>
+                    <div class="sparkle sparkle-4"></div>
+                    <div class="sparkle sparkle-5"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="balloon-container">
+            <div class="balloon balloon-left animate__animated animate__bounceInUp animate__delay-3s floating"></div>
+            <div class="balloon balloon-right animate__animated animate__bounceInUp animate__delay-3s floating"></div>
+            <div class="balloon balloon-center animate__animated animate__bounceInUp animate__delay-4s floating"></div>
+        </div>
+
+        <p class="instruction-text animate__animated animate__fadeIn animate__delay-4s">
+            (Haz clic para ver los detalles)
+        </p>
+
+        <button onclick="window.location.href='/'" class="continue-btn animate__animated animate__pulse animate__infinite animate__delay-5s" id="continue-btn">
+            Continuar
+            <span class="button-decoration">
+                <img src="/icons/send-horizontal.svg" alt="Continuar" class="button-icon">
+            </span>
+        </button>
+    </div>
+</div>
