@@ -1,16 +1,19 @@
 ---
 import '../styles/contador.css';
 ---
-<section class="countdown" id="countdown" role="region" aria-labelledby="countdown-title" style="position: relative; z-index: 10;">
+
+<section class="countdown" id="countdown" role="region" aria-labelledby="countdown-title">
   <div class="countdown__info">
     <div class="countdown__header">
       <h2 class="countdown__title" id="countdown-title">¡La cuenta regresiva ha comenzado!</h2>
+      <p class="countdown__text">Faltan solo unos instantes para una tarde mágica llena de juegos y alegría 🎉</p>
       <div class="countdown__decoration">
         <div class="countdown__line"></div>
         <div class="countdown__star"></div>
         <div class="countdown__line"></div>
       </div>
     </div>
+    
     <div class="countdown__timer" role="timer" aria-live="polite">
       <div class="countdown__item">
         <div class="countdown__card">
@@ -43,77 +46,45 @@ import '../styles/contador.css';
   </div>
 
   <div class="countdown__message" id="countdown-message" style="display:none;">
-    <h3 class="countdown__message-title">¡Ya empezó la fiesta!</h3>
-    <div class="countdown__message-emoji">🎈🎊🎉</div>
-    <button class="countdown__cta" onclick="scrollTo('detalles')" role="button" tabindex="0" aria-label="Ir a la información del evento">
-      <div class="countdown__cta-content">
-        <p class="countdown__cta-text">¡Sigue bajando para descubrir más sobre esta gran aventura!</p>
-        <div class="countdown__cta-arrow">
-          <i class="bi bi-arrow-down-circle-fill countdown__cta-icon" aria-hidden="true"></i>
-        </div>
-      </div>
-    </button>
-    <button class="countdown__cta" onclick="scrollTo('Detalles')" role="button" tabindex="0" aria-label="Ir a la información del evento">
-      <div class="countdown__cta-content">
-        <p class="countdown__cta-text">¡Sigue bajando para descubrir más sobre esta gran aventura!</p>
-        <div class="countdown__cta-arrow">
-          <i class="bi bi-arrow-down-circle-fill countdown__cta-icon" aria-hidden="true"></i>
-        </div>
-      </div>
+    <h3 class="countdown__message-title">¡Ya comenzó la fiesta! 🎉🎈🎊</h3>
+    <button class="countdown__cta" onclick="scrollTo('principal')">
+      <span class="countdown__cta-text">Ir a la sección principal</span>
     </button>
   </div>
 </section>
 
-<script>
-  // Mover scrollTo fuera del DOMContentLoaded para hacerlo global
-  function scrollTo(sectionId: string) {
+<script is:inline>
+  const EVENT_DATE = new Date('2025-05-10T13:00:00-03:00');
+  
+  function scrollTo(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) section.scrollIntoView({ behavior: 'smooth' });
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const EVENT_DATE = new Date('2025-05-10T13:00:00-03:00');
-    const elements = {
-      days: document.getElementById('countdown-days'),
-      hours: document.getElementById('countdown-hours'),
-      minutes: document.getElementById('countdown-minutes'),
-      seconds: document.getElementById('countdown-seconds'),
-    };
-    const container = document.querySelector('.countdown__timer');
-    const messageElement = document.getElementById('countdown-message');
+  function updateCountdown() {
+    const now = new Date();
+    const diff = EVENT_DATE.getTime() - now.getTime();
+    const timer = document.querySelector('.countdown__timer');
+    const message = document.getElementById('countdown-message');
 
-    function getTimeRemaining() {
-      const now = new Date();
-      const diff = EVENT_DATE.getTime() - now.getTime();
-
-      if (diff < 0) return { expired: true };
-      return {
-        expired: false,
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((diff / (1000 * 60)) % 60),
-        seconds: Math.floor((diff / 1000) % 60),
-      };
+    if (diff <= 0) {
+      if (timer) timer.style.display = 'none';
+      if (message) message.style.display = 'block';
+      return;
     }
 
-    function updateCountdown() {
-      const time = getTimeRemaining();
-      if (time.expired && container && messageElement) {
-        (container as HTMLElement).style.display = 'none';
-        (messageElement as HTMLElement).style.display = 'block';
-        return;
-      }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
 
-      Object.entries(elements).forEach(([key, el]) => {
-        if (el && time[key as keyof typeof time]) {
-          el.textContent = String(time[key as keyof typeof time]).padStart(2, '0');
-        }
-      });
-    }
+    document.getElementById('countdown-days').textContent = String(days).padStart(2, '0');
+    document.getElementById('countdown-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('countdown-minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('countdown-seconds').textContent = String(seconds).padStart(2, '0');
+  }
 
-    updateCountdown();
-    const interval: number = setInterval(updateCountdown, 1000) as unknown as number;
-
-    window.addEventListener('beforeunload', () => clearInterval(interval));
-  });
+  // Actualizar inmediatamente y luego cada segundo
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 </script>
