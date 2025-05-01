@@ -1,12 +1,12 @@
-import sharp from 'sharp';
-import { readdirSync, mkdirSync, existsSync } from 'fs';
-import { join, parse } from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import sharp from "sharp";
+import { readdirSync, mkdirSync, existsSync } from "fs";
+import { join, parse } from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const inputDir = join(__dirname, '../public');
-const outputDir = join(__dirname, '../public/img');
+const inputDir = join(__dirname, "../public");
+const outputDir = join(__dirname, "../public/img");
 
 if (!existsSync(outputDir)) {
   mkdirSync(outputDir, { recursive: true });

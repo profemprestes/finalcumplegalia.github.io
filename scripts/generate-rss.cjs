@@ -1,57 +1,51 @@
-const fs = require('fs');
-const path = require('path');
-const RSS = require('rss');
+const fs = require("fs");
+const path = require("path");
+const RSS = require("rss");
+const { glob } = require("glob");
 
-// Configuración mejorada del feed RSS
+// Configuración mejorada
 const feed = new RSS({
   title: "Galia Cumple",
   description: "Sitio web del cumpleaños de Galia",
   feed_url: "https://galiacumple1.netlify.app/rss.xml",
   site_url: "https://galiacumple1.netlify.app",
   language: "es",
-  copyright: `© ${new Date().getFullYear()} Galia Cumple`,
-  managingEditor: "info@galiacumple1.netlify.app",
-  webMaster: "info@galiacumple1.netlify.app",
-  ttl: 60, // Tiempo de vida en minutos
+  copyright: `© ${new Date().getFullYear()} Familia de Galia`,
+  ttl: 1440,
 });
 
-// Función para agregar items desde archivos Markdown o JSON
-function addItemsFromContent() {
+// Función para extraer metadatos de archivos .astro
+async function processAstroFiles() {
   try {
-    // Aquí podrías leer desde una carpeta de posts
-    // Ejemplo básico:
-    feed.item({
-      title: "Celebración del Primer Año",
-      description: "Todos los detalles sobre la celebración del primer año de Galia",
-      url: "https://galiacumple1.netlify.app/post/celebración",
-      guid: "celebración-primer-año",
-      date: new Date(),
-      categories: ['Celebración', 'Primer Año'],
-      author: 'Familia de Galia',
+    const files = await glob("src/pages/**/*.astro");
+
+    files.forEach((file) => {
+      const content = fs.readFileSync(file, "utf8");
+      const titleMatch = content.match(/title="([^"]+)"/);
+      const descriptionMatch = content.match(/description="([^"]+)"/);
+
+      if (titleMatch) {
+        feed.item({
+          title: titleMatch[1],
+          description: descriptionMatch ? descriptionMatch[1] : "",
+          url: `https://galiacumple1.netlify.app${file.replace("src/pages", "").replace(".astro", "")}`,
+          date: new Date(),
+          guid: file,
+        });
+      }
     });
-    
-    // Agregar más items según sea necesario
   } catch (error) {
-    console.error('Error al agregar items al RSS:', error);
+    console.error("Error procesando archivos Astro:", error);
   }
 }
 
 // Generar el feed
-addItemsFromContent();
+processAstroFiles().then(() => {
+  const publicDir = path.join(__dirname, "../public");
+  if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir);
+  }
 
-// Crear directorio public si no existe
-const publicDir = path.join(__dirname, '../public');
-if (!fs.existsSync(publicDir)) {
-  fs.mkdirSync(publicDir);
-}
-
-// Generar el archivo XML con manejo de errores
-try {
-  const rssPath = path.join(publicDir, 'rss.xml');
-  fs.writeFileSync(rssPath, feed.xml({ indent: true }));
-  console.log(`✅ RSS generado correctamente en ${rssPath}`);
-  console.log(`⏱ Última actualización: ${new Date().toLocaleString()}`);
-} catch (error) {
-  console.error('❌ Error al generar el RSS:', error);
-  process.exit(1);
-}
+  fs.writeFileSync(path.join(publicDir, "rss.xml"), feed.xml({ indent: true }));
+  console.log("✅ RSS generado correctamente");
+});
