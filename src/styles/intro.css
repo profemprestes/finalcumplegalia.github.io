@@ -1,199 +1,199 @@
 /* Estilos para la sección de introducción (Intro)  */
 
 .intro-section {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden; /* Oculta el desbordamiento de partículas  */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden; /* Oculta el desbordamiento de partículas  */
 }
 
 .intro-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 #confetti-container {
-    /* Estilos para el confeti (si es necesario)  */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0; /* Asegura que el confeti esté detrás del contenido  */
-    pointer-events: none;
+  /* Estilos para el confeti (si es necesario)  */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Asegura que el confeti esté detrás del contenido  */
+  pointer-events: none;
 }
 
 .birthday-card {
-    position: relative;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    border-radius: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    text-align: center;
-    z-index: 10; /* Asegura que la tarjeta esté sobre las partículas  */
+  position: relative;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+  z-index: 10; /* Asegura que la tarjeta esté sobre las partículas  */
 }
 
 .card-decoration {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: var(--accent-color);
-    border-radius: 50%;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
 }
 
 .card-decoration-top-left {
-    top: 10px;
-    left: 10px;
+  top: 10px;
+  left: 10px;
 }
 
 .card-decoration-top-right {
-    top: 10px;
-    right: 10px;
+  top: 10px;
+  right: 10px;
 }
 
 .card-decoration-bottom-left {
-    bottom: 10px;
-    left: 10px;
+  bottom: 10px;
+  left: 10px;
 }
 
 .card-decoration-bottom-right {
-    bottom: 10px;
-    right: 10px;
+  bottom: 10px;
+  right: 10px;
 }
 
 .ribbon {
-    /* Estilos para la cinta (si la tienes)  */
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 30px;
-    background-color: var(--primary-color);
-    /* ...otros estilos de la cinta...  */
+  /* Estilos para la cinta (si la tienes)  */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 30px;
+  background-color: var(--primary-color);
+  /* ...otros estilos de la cinta...  */
 }
 
 .birthday-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
 }
 
 .welcome-message {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .stars-container {
-    /* Estilos para las estrellas (si las tienes)  */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
+  /* Estilos para las estrellas (si las tienes)  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .star {
-    width: 10px;
-    height: 10px;
-    background-color: white;
-    border-radius: 50%;
-    margin: 0 5px;
-    /* ...estilos de animación de las estrellas...  */
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 0 5px;
+  /* ...estilos de animación de las estrellas...  */
 }
 
 .gallery {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
 .gallery-item {
-    /* Estilos para cada elemento de la galería  */
-    width: 200px;
-    height: 200px;
+  /* Estilos para cada elemento de la galería  */
+  width: 200px;
+  height: 200px;
 }
 
 .image-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .balloon-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .balloon {
-    width: 50px;
-    height: 70px;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    margin: 0 10px;
-    /* ...estilos de color y animación de los globos...  */
+  width: 50px;
+  height: 70px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  margin: 0 10px;
+  /* ...estilos de color y animación de los globos...  */
 }
 
 .balloon-left {
-    background-color: pink;
+  background-color: pink;
 }
 
 .balloon-right {
-    background-color: lightblue;
+  background-color: lightblue;
 }
 
 .balloon-center {
-    background-color: yellow;
+  background-color: yellow;
 }
 
 .instruction-text {
-    font-size: 0.8rem;
-    color: #888;
-    margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 1rem;
 }
 
 .continue-btn {
-    background-color: var(--accent-color);
-    color: var(--secondary-color);
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 2rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .continue-btn:hover {
-    background-color: var(--accent-color);
+  background-color: var(--accent-color);
 }
 
 .button-decoration {
-    display: inline-flex;
-    align-items: center;
-    margin-left: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.5rem;
 }
 
 .button-icon {
-    width: 1rem;
-    height: 1rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 /* Añade aquí cualquier otra regla de estilo personalizada  */

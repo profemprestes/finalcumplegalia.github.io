@@ -6,7 +6,11 @@
   padding: 1rem;
   perspective: 1000px;
   text-align: center;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
 }
 
 .birthday-card {
@@ -14,9 +18,9 @@
   border-radius: 2rem;
   padding: clamp(2rem, 6vw, 4rem);
   margin: 1rem;
-  box-shadow: 
-      0 10px 30px rgba(212, 163, 115, 0.2),
-      0 0 60px rgba(255, 255, 255, 0.1) inset;
+  box-shadow:
+    0 10px 30px rgba(212, 163, 115, 0.2),
+    0 0 60px rgba(255, 255, 255, 0.1) inset;
   max-width: 700px;
   width: 100%;
   position: relative;
@@ -28,9 +32,9 @@
 
 .birthday-card:hover {
   transform: translateY(-15px) rotateX(5deg);
-  box-shadow: 
-      0 20px 40px rgba(212, 163, 115, 0.3),
-      0 0 80px rgba(255, 255, 255, 0.2) inset;
+  box-shadow:
+    0 20px 40px rgba(212, 163, 115, 0.3),
+    0 0 80px rgba(255, 255, 255, 0.2) inset;
 }
 
 h1 {
@@ -44,7 +48,7 @@ h1 {
   font-size: clamp(1.2rem, 4vw, 1.8rem);
   color: var(--dark-ochre);
   margin-bottom: 2rem;
-  font-family: 'Baloo 2', cursive;
+  font-family: "Baloo 2", cursive;
 }
 
 .gallery {
@@ -97,7 +101,7 @@ h1 {
 
 @keyframes drawSmile {
   to {
-      stroke-dashoffset: 0;
+    stroke-dashoffset: 0;
   }
 }
 
@@ -133,26 +137,33 @@ h1 {
 }
 
 @keyframes sparkle {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.2); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
 }
 
 @media (max-width: 768px) {
   .gallery {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .gallery-item {
-      max-width: 120px;
+    max-width: 120px;
   }
 
   h1 {
-      font-size: 2rem;
+    font-size: 2rem;
   }
 
   .welcome-message {
-      font-size: 1.5rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -171,47 +182,47 @@ h1 {
 
 @media (max-width: 768px) {
   .intro-container {
-      padding: 0.5rem;
+    padding: 0.5rem;
   }
 
   .birthday-card {
-      padding: 1.5rem 1rem;
+    padding: 1.5rem 1rem;
   }
 
   .gallery-item {
-      max-width: 180px;
-      margin: 0 auto;
+    max-width: 180px;
+    margin: 0 auto;
   }
 
   .continue-btn {
-      width: 100%;
-      max-width: 300px;
-      margin: 0 auto;
-      padding: 0.8em 1.5em;
-      font-size: clamp(1rem, 3vw, 1.2rem);
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 0.8em 1.5em;
+    font-size: clamp(1rem, 3vw, 1.2rem);
   }
 
   .button-icon {
-      width: 16px;
-      height: 16px;
+    width: 16px;
+    height: 16px;
   }
 }
 
 @media (max-width: 480px) {
   .birthday-card {
-      padding: 1rem;
+    padding: 1rem;
   }
 
   .gallery-item {
-      max-width: 150px;
+    max-width: 150px;
   }
 
   .welcome-message {
-      margin-bottom: 1rem;
+    margin-bottom: 1rem;
   }
 
   .instruction-text {
-      margin: 1rem 0;
+    margin: 1rem 0;
   }
 }
 
@@ -220,9 +231,15 @@ h1 {
 }
 
 @keyframes floating {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .stars-container {
@@ -239,17 +256,47 @@ h1 {
   width: 20px;
   height: 20px;
   background: rgba(255, 215, 0, 0.8);
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
   animation: twinkle 2s infinite;
 }
 
-.star-1 { top: 10%; left: 10%; animation-delay: 0s; }
-.star-2 { top: 20%; right: 15%; animation-delay: 0.3s; }
-.star-3 { bottom: 15%; left: 20%; animation-delay: 0.6s; }
+.star-1 {
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+.star-2 {
+  top: 20%;
+  right: 15%;
+  animation-delay: 0.3s;
+}
+.star-3 {
+  bottom: 15%;
+  left: 20%;
+  animation-delay: 0.6s;
+}
 
 @keyframes twinkle {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.2); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
 }
 
 .balloon {
@@ -261,7 +308,7 @@ h1 {
 }
 
 .balloon::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -271,6 +318,12 @@ h1 {
   background: rgba(0, 0, 0, 0.3);
 }
 
-.balloon-left { left: -30px; }
-.balloon-right { right: -30px; }
-.balloon-center { top: -20px; }
+.balloon-left {
+  left: -30px;
+}
+.balloon-right {
+  right: -30px;
+}
+.balloon-center {
+  top: -20px;
+}
