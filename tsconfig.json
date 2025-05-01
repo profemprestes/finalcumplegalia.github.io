@@ -7,7 +7,8 @@
       "@layouts/*": ["src/layouts/*"],
       "@styles/*": ["src/styles/*"],
       "@assets/*": ["src/assets/*"],
-      "@pages/*": ["src/pages/*"]
+      "@pages/*": ["src/pages/*"],
+      "@scripts/*": ["src/scripts/*"]
     }
   },
   "include": [".astro/types.d.ts", "src", "astro.config.mjs"],
