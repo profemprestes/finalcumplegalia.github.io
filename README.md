@@ -1,50 +1,84 @@
-# Astro Starter Kit: Basics
 
-```sh
-npm create astro@latest -- --template basics
+# Galia cumple 1 año! 🎉
+¡Bienvenidos al sitio web de celebración del primer año de Galia! Este proyecto es una página web interactiva creada para conmemorar este especial momento.
+## 🚀 Tecnologías utilizadas
+- **Astro**: Framework moderno para construir sitios web rápidos
+- **Tailwind CSS**: Framework de utilidades CSS para estilos personalizados
+- **Particles.js**: Biblioteca para efectos de partículas interactivas
+- **GSAP**: Biblioteca para animaciones fluidas
+## 📂 Estructura del proyecto
 ```
+.
+```markdown:c:/Users/Matias/Desktop/Galia/finalcumplegalia.github.io/README.md
+# Galia cumple 1 año! 🎉
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+¡Bienvenidos al sitio web de celebración del primer año de Galia! Este proyecto es una página web interactiva creada para conmemorar este especial momento.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🚀 Tecnologías utilizadas
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+- **Astro**: Framework moderno para construir sitios web rápidos
+- **Tailwind CSS**: Framework de utilidades CSS para estilos personalizados
+- **Particles.js**: Biblioteca para efectos de partículas interactivas
+- **GSAP**: Biblioteca para animaciones fluidas
 
-## 🚀 Project Structure
+## 📂 Estructura del proyecto
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
+```
+.
+├── public/            # Assets estáticos (imágenes, favicons)
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── assets/        # SVG y recursos gráficos
+│   ├── components/    # Componentes reutilizables
+│   ├── layouts/       # Plantillas base
+│   ├── pages/         # Páginas principales
+│   └── styles/        # Archivos CSS personalizados
+├── astro.config.mjs   # Configuración de Astro
+├── tailwind.config.js # Configuración de Tailwind
+└── package.json       # Dependencias y scripts
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## ✨ Características principales
 
-## 🧞 Commands
+1. **Página de carga animada** con efecto de partículas
+2. **Cuenta regresiva interactiva** hasta el día del evento
+3. **Sección hero** con información destacada
+4. **Diseño responsivo** que se adapta a todos los dispositivos
+5. **Efectos visuales** con animaciones CSS y GSAP
 
-All commands are run from the root of the project, from a terminal:
+## 🛠️ Cómo ejecutar el proyecto
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+1. Instalar dependencias:
+```bash
+npm install
+```
 
-## 👀 Want to learn more?
+2. Ejecutar en modo desarrollo:
+```bash
+npm run dev
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+3. Construir para producción:
+```bash
+npm run build
+```
 
-# finalcumplegalia.github.io
+## 🌐 Despliegue
+
+El sitio está configurado para desplegarse en Netlify con las siguientes características:
+- Compresión automática de assets
+- Generación de sitemap
+- Redirecciones configuradas
+
+## 📝 Notas adicionales
+
+El proyecto utiliza una paleta de colores cálidos y acogedores:
+- Color primario: `#ccd5ae`
+- Color secundario: `#fefae0`
+- Color de acento: `#d4a373`
+
+¡Esperamos que disfrutes explorando este sitio tanto como nosotros disfrutamos creándolo!
+```
+
+Este README proporciona una visión general completa del proyecto, incluyendo su estructura, tecnologías utilizadas y características principales. El formato está optimizado para GitHub con emojis y sintaxis markdown.
+
+        
