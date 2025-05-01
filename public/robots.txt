@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://galiacumple1.netlify.app/sitemap-index.xml

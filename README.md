@@ -16,16 +16,19 @@
 ## 🚀 Tecnologías utilizadas
 
 - **Astro**: Framework moderno para construir sitios web rápidos y eficientes.
+
   - Permite la composición de componentes de múltiples frameworks (React, Vue, etc.) en un solo proyecto
   - Optimiza automáticamente los assets y reduce el tamaño de la página final
   - Soporte para Render Side y Render Static
 
 - **Tailwind CSS**: Framework de utilidades CSS para estilos personalizados.
+
   - Proporciona una metodología utility-first para el diseño
   - Permite personalización total de la paleta de colores y estilos
   - Integración perfecta con Astro mediante plugins
 
 - **Particles.js**: Biblioteca para efectos de partículas interactivas.
+
   - Crea efectos visuales impresionantes con partículas animadas
   - Integración directa con cualquier proyecto web
   - Personalización completa mediante configuración JSON
@@ -37,7 +40,7 @@
 
 ## 📂 Estructura del proyecto
 
-``` 
+```
 .
 ├── public/            # Assets estáticos (imágenes, favicons)
 │   ├── images/        # Imágenes estáticas
@@ -81,12 +84,14 @@
 ### Pasos
 
 1. Clonar el repositorio:
+
 ```bash
 git clone https://github.com/tu-repositorio/galia-anniversary.git
 cd galia-anniversary
 ```
 
 2. Instalar dependencias:
+
 ```bash
 npm install
 # o si usas yarn
@@ -94,22 +99,27 @@ yarn install
 ```
 
 3. Ejecutar en modo desarrollo:
+
 ```bash
 npm run dev
 # o si usas yarn
 yarn dev
 ```
+
 El servidor de desarrollo se iniciará en `http://localhost:3000`
 
 4. Construir para producción:
+
 ```bash
 npm run build
 # o si usas yarn
 yarn build
 ```
+
 El contenido estará disponible en la carpeta `dist/`
 
 5. Visualizar la versión de producción localmente:
+
 ```bash
 npm run preview
 # o si usas yarn
@@ -131,6 +141,7 @@ También puede desplegarse en Vercel o GitHub Pages con mínimas modificaciones 
 ## 📝 Notas adicionales
 
 El proyecto utiliza una paleta de colores cálidos y acogedores:
+
 - Color primario: `#ccd5ae` (verde suave)
 - Color secundario: `#fefae0` (amarillo pálido)
 - Color de acento: `#d4a373` (café)

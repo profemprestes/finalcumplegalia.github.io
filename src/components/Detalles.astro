@@ -1,50 +1,109 @@
 ---
-import { Baby, CheckCircle, Gift } from 'lucide-astro';
-import '../styles/detalles.css';
+// Remove the astro-icon import
+const eventoConfig = {
+  fecha: '15 de Mayo de 2025',
+  hora: '15:00 - 19:00',
+  lugar: 'Jardín Mágico - Av. del Sol 123',
+  codigo_vestimenta: 'Casual / Colores pastel',
+  regalo_sugerido: 'Libros infantiles o juguetes didácticos',
+  coordenadas: {
+    lat: 19.432608,
+    lng: -99.133209, // Coordenadas ficticias, reemplazar con las reales
+  }
+};
 ---
 
-<section id="detalles" class="py-16 px-6 md:px-12 bg-secondary-color text-text-color">
-  <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Más sobre este gran día</h2>
-
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-
-    <!-- Tarjeta 1: Conoceme -->
-    <div class="bg-white shadow-md rounded-xl p-6 flex flex-col items-center text-center space-y-4 hover:shadow-lg transition">
-      <Baby class="w-12 h-12 text-accent-color" />
-      <h3 class="text-xl font-semibold">¿Querés saber más sobre Galia?</h3>
-      <p class="text-sm">
-        Desde sus primeras sonrisas hasta sus pasos tambaleantes, Galia ha llenado nuestras vidas de alegría. 
-        Descubrí algunas curiosidades sobre su primer año.
-      </p>
-      <button class="mt-auto px-4 py-2 bg-accent-color text-white rounded-full hover:bg-accent-color/90 transition">
-        Ver detalles
-      </button>
+<section id="detalles" class="py-16 md:py-24 bg-papaya_whip bg-opacity-80">
+  <div class="container mx-auto px-4">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-buff-300 text-center mb-12">
+        Los detalles del evento
+      </h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Columna de información -->
+        <div class="space-y-6" data-animation="animate__fadeInLeft">
+          <!-- Fecha -->
+          <div class="flex items-start space-x-4 bg-cornsilk p-5 rounded-lg shadow-md transform transition-transform hover:scale-105">
+            <i class="bi bi-calendar text-buff flex-shrink-0 mt-1 text-xl"></i>
+            <div>
+              <h3 class="text-xl font-semibold text-buff-300">Fecha</h3>
+              <p class="text-gray-700">{eventoConfig.fecha}</p>
+            </div>
+          </div>
+          
+          <!-- Hora -->
+          <div class="flex items-start space-x-4 bg-cornsilk p-5 rounded-lg shadow-md transform transition-transform hover:scale-105">
+            <i class="bi bi-clock text-buff flex-shrink-0 mt-1 text-xl"></i>
+            <div>
+              <h3 class="text-xl font-semibold text-buff-300">Hora</h3>
+              <p class="text-gray-700">{eventoConfig.hora}</p>
+            </div>
+          </div>
+          
+          <!-- Lugar -->
+          <div class="flex items-start space-x-4 bg-cornsilk p-5 rounded-lg shadow-md transform transition-transform hover:scale-105">
+            <i class="bi bi-geo-alt text-buff flex-shrink-0 mt-1 text-xl"></i>
+            <div>
+              <h3 class="text-xl font-semibold text-buff-300">Lugar</h3>
+              <p class="text-gray-700">{eventoConfig.lugar}</p>
+              <a 
+                href={`https://maps.google.com/?q=${eventoConfig.coordenadas.lat},${eventoConfig.coordenadas.lng}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block mt-2 text-tea_green-300 hover:text-tea_green-200 transition-colors"
+              >
+                Ver en Google Maps
+              </a>
+            </div>
+          </div>
+          
+          <!-- Regalo -->
+          <div class="flex items-start space-x-4 bg-cornsilk p-5 rounded-lg shadow-md transform transition-transform hover:scale-105">
+            <i class="bi bi-gift text-buff flex-shrink-0 mt-1 text-xl"></i>
+            <div>
+              <h3 class="text-xl font-semibold text-buff-300">Sugerencia de regalo</h3>
+              <p class="text-gray-700">{eventoConfig.regalo_sugerido}</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mapa o imagen decorativa -->
+        <div class="h-full" data-animation="animate__fadeInRight">
+          <div class="bg-cornsilk rounded-lg shadow-md overflow-hidden h-full">
+            <!-- Opción 1: Mapa estático (ligero, buena opción por rendimiento) -->
+            <img 
+              data-src={`https://maps.googleapis.com/maps/api/staticmap?center=${eventoConfig.coordenadas.lat},${eventoConfig.coordenadas.lng}&zoom=15&size=600x500&markers=color:red|${eventoConfig.coordenadas.lat},${eventoConfig.coordenadas.lng}&key=TU_API_KEY`}
+              alt="Ubicación del evento"
+              class="w-full h-full object-cover lazy"
+              width="600"
+              height="500"
+              loading="lazy"
+            />
+            
+            <!-- Opción 2: Como alternativa, puedes usar una imagen decorativa -->
+            <!-- <img 
+              data-src="/img/venue.jpg"
+              data-webp="/img/venue.webp"
+              alt="Lugar del evento"
+              class="w-full h-full object-cover lazy"
+              loading="lazy"
+            /> -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Botón de confirmación -->
+      <div class="text-center mt-12">
+        <a 
+          href="#rsvp" 
+          class="btn btn-primary px-8 py-4"
+          data-animation="animate__zoomIn"
+        >
+          Confirmar asistencia
+        </a>
+      </div>
     </div>
-
-    <!-- Tarjeta 2: Confirmar asistencia -->
-    <div class="bg-white shadow-md rounded-xl p-6 flex flex-col items-center text-center space-y-4 hover:shadow-lg transition">
-      <CheckCircle class="w-12 h-12 text-accent-color" />
-      <h3 class="text-xl font-semibold">Confirmar asistencia</h3>
-      <p class="text-sm">
-        Queremos contar contigo, por eso es importante que confirmes si vas a venir. ¡Tu presencia es muy especial para nosotros!
-      </p>
-      <a href="https://wa.me/59891234567" target="_blank" rel="noopener noreferrer"
-         class="mt-auto inline-block px-4 py-2 bg-accent-color text-white rounded-full hover:bg-accent-color/90 transition">
-        Confirmar ahora
-      </a>
-    </div>
-
-    <!-- Tarjeta 3: Mensaje sorpresa -->
-    <div class="bg-white shadow-md rounded-xl p-6 flex flex-col items-center text-center space-y-4 hover:shadow-lg transition">
-      <Gift class="w-12 h-12 text-accent-color" />
-      <h3 class="text-xl font-semibold">Tu mensaje secreto</h3>
-      <p class="text-sm">
-        ¿Querés dejarle un mensajito a Galia? Escribí algo lindo, y lo veremos juntos el día de la fiesta como una gran sorpresa.
-      </p>
-      <button class="mt-auto px-4 py-2 bg-accent-color text-white rounded-full hover:bg-accent-color/90 transition">
-        Enviar mensaje
-      </button>
-    </div>
-
   </div>
 </section>
+

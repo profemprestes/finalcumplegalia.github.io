@@ -1,41 +1,98 @@
 ---
 interface Props {
   title: string;
+  description?: string;
+  ogImage?: string;
 }
 
-const { title } = Astro.props;
+const { 
+  title = "Galia cumple 1 año! | Bienvenida",
+  description = "¡Bienvenidos a la aventura de Galia! Acompáñanos en la celebración de su primer año lleno de sonrisas y momentos especiales.",
+  ogImage = "https://galiacumple1.netlify.app/img/galia-share.jpg" 
+} = Astro.props;
+
+// Importar CSS usando la directiva de Astro para optimizar la carga
+import '../styles/global.css';
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Precargar fuentes críticas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
 
-    <title>Galia cumple 1 año! | Bienvenida</title>
-    <meta name="title" content="Galia cumple 1 año! | Bienvenida" />
-    <meta name="description" content="¡Bienvenidos a la aventura de Galia! Acompáñanos en la celebración de su primer año lleno de sonrisas y momentos especiales." />
-
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://galiacumple1.netlify.app/intro" />
-    <meta property="og:title" content="Galia cumple 1 año! | Bienvenida" />
-    <meta property="og:description" content="¡Bienvenidos a la aventura de Galia! Acompáñanos en la celebración de su primer año lleno de sonrisas y momentos especiales." />
-    <meta property="og:image" content="https://galiacumple1.netlify.app/img/galia-share.jpg" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
 
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://galiacumple1.netlify.app/intro" />
-    <meta property="twitter:title" content="Galia cumple 1 año! | Bienvenida" />
-    <meta property="twitter:description" content="¡Bienvenidos a la aventura de Galia! Acompáñanos en la celebración de su primer año lleno de sonrisas y momentos especiales." />
-    <meta property="twitter:image" content="https://galiacumple1.netlify.app/img/galia-share.jpg" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
 
+    <!-- Tema y favicon -->
     <meta name="theme-color" content="#ccd5aeff" />
+    <link rel="icon" type="image/svg" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <link rel="stylesheet" href="/src/styles/global.css" />
-
+    <!-- Scripts optimizados con carga diferida -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    
+    <!-- Script para carga de imágenes optimizada -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const lazyImages = document.querySelectorAll<HTMLImageElement>('img.lazy');
+        if ('IntersectionObserver' in window) {
+          const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const img = entry.target as HTMLImageElement;
+                if (img.dataset.src) {
+                  img.src = img.dataset.src;
+                  img.classList.add('loaded');
+                  imageObserver.unobserve(img);
+                }
+              }
+            });
+          });
+          lazyImages.forEach(img => imageObserver.observe(img));
+        } else {
+          // Fallback para navegadores sin soporte
+          lazyImages.forEach(img => {
+            const imgElement = img as HTMLImageElement;
+            if (imgElement.dataset.src) {
+              imgElement.src = imgElement.dataset.src;
+              imgElement.classList.add('loaded');
+            }
+          });
+        }
+      });
+    </script>
   </head>
-  <body>
+  <body class="overflow-x-hidden bg-cornsilk">
     <slot />
+    
+    <!-- Cargar análisis solo en producción -->
+    {import.meta.env.PROD && (
+      <script>
+      
+      </script>
+    )}
   </body>
 </html>

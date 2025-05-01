@@ -1,0 +1,137 @@
+---
+import '@styles/contador.css';
+import { formatDistance } from 'date-fns';
+import { es } from 'date-fns/locale';
+
+// Fecha del evento
+const fechaEvento = new Date('2025-05-10T13:00:00');
+const ahora = new Date();
+
+// Calcular la diferencia para SEO e inicialización
+const diferencia = formatDistance(fechaEvento, ahora, {
+  addSuffix: true,
+  locale: es
+});
+
+// Verificar si el evento ya pasó
+const eventoPasado = ahora > fechaEvento;
+---
+
+<section id="contador" class="py-12 md:py-16 bg-beige bg-opacity-80">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-buff-300 mb-6">
+        {eventoPasado ? '¡El evento ya ocurrió!' : '¿Cuánto falta para la fiesta?'}
+      </h2>
+      
+      {!eventoPasado && (
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-cornsilk rounded-lg p-4 shadow-md transform hover:scale-105 transition-transform">
+            <div id="dias" class="text-3xl md:text-5xl font-bold text-buff">0</div>
+            <div class="text-sm md:text-base text-gray-600">Días</div>
+          </div>
+          <div class="bg-cornsilk rounded-lg p-4 shadow-md transform hover:scale-105 transition-transform">
+            <div id="horas" class="text-3xl md:text-5xl font-bold text-buff">0</div>
+            <div class="text-sm md:text-base text-gray-600">Horas</div>
+          </div>
+          <div class="bg-cornsilk rounded-lg p-4 shadow-md transform hover:scale-105 transition-transform">
+            <div id="minutos" class="text-3xl md:text-5xl font-bold text-buff">0</div>
+            <div class="text-sm md:text-base text-gray-600">Minutos</div>
+          </div>
+          <div class="bg-cornsilk rounded-lg p-4 shadow-md transform hover:scale-105 transition-transform">
+            <div id="segundos" class="text-3xl md:text-5xl font-bold text-buff">0</div>
+            <div class="text-sm md:text-base text-gray-600">Segundos</div>
+          </div>
+        </div>
+      )}
+      
+      <!-- Información SEO y para usuarios sin JavaScript -->
+      <div aria-live="polite" class="mt-6 text-gray-700">
+        <noscript>
+          <p>La fiesta es {diferencia}.</p>
+        </noscript>
+        <p id="contador-texto" class="hidden">La fiesta es {diferencia}.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ fechaEvento: fechaEvento.toISOString(), eventoPasado }}>
+  // Convertir string ISO a objeto Date
+  const fechaEventoObj = new Date(fechaEvento);
+  
+  // Solo configurar el contador si el evento aún no ocurrió
+  if (!eventoPasado) {
+    // Mostrar el texto para SEO
+    document.getElementById('contador-texto').classList.remove('hidden');
+    
+    // Función para actualizar el contador
+    function actualizarContador() {
+      const ahora = new Date();
+      const diferencia = fechaEventoObj - ahora;
+      
+      // Si ya pasó el evento durante la sesión actual
+      if (diferencia < 0) {
+        document.getElementById('contador').innerHTML = '<div class="container mx-auto px-4"><h2 class="text-2xl md:text-3xl font-bold text-buff-300">¡El evento ya ocurrió!</h2></div>';
+        return;
+      }
+      
+      // Calcular unidades de tiempo
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+      
+      // Actualizar elementos del DOM solo si existen
+      const elementoDias = document.getElementById('dias');
+      const elementoHoras = document.getElementById('horas');
+      const elementoMinutos = document.getElementById('minutos');
+      const elementoSegundos = document.getElementById('segundos');
+      
+      if (elementoDias) elementoDias.textContent = dias;
+      if (elementoHoras) elementoHoras.textContent = horas;
+      if (elementoMinutos) elementoMinutos.textContent = minutos;
+      if (elementoSegundos) elementoSegundos.textContent = segundos;
+    }
+    
+    // Actualizar inmediatamente
+    actualizarContador();
+    
+    // Optimización: en lugar de actualizar cada segundo, actualizar cada segundo
+    // solo cuando falte poco tiempo, de lo contrario usar intervalos más largos
+    function configurarIntervalo() {
+      const ahora = new Date();
+      const diferencia = fechaEventoObj - ahora;
+      
+      if (diferencia <= 0) {
+        // El evento ya pasó
+        actualizarContador();
+        return;
+      } else if (diferencia <= 24 * 60 * 60 * 1000) {
+        // Último día: actualizar cada segundo
+        return setInterval(actualizarContador, 1000);
+      } else if (diferencia <= 7 * 24 * 60 * 60 * 1000) {
+        // Última semana: actualizar cada minuto
+        actualizarContador();
+        return setInterval(actualizarContador, 60 * 1000);
+      } else {
+        // Más de una semana: actualizar cada hora
+        actualizarContador();
+        return setInterval(actualizarContador, 60 * 60 * 1000);
+      }
+    }
+    
+    // Iniciar el intervalo optimizado
+    const intervalo = configurarIntervalo();
+    
+    // Limpiar intervalo cuando la pestaña no está visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        clearInterval(intervalo);
+      } else {
+        clearInterval(intervalo);
+        configurarIntervalo();
+      }
+    });
+  }
+</script>

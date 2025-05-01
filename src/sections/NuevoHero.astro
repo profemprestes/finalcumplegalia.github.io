@@ -1,0 +1,50 @@
+---
+import '../styles/hero2.css';
+---
+
+<section class="hero" id="hero" style="position: relative; z-index: 10;">
+  <div class="hero__card">
+    <div class="hero__image-container">
+      <img src="/GaliaHero.svg" alt="Galia en su primer cumpleaños" class="hero__image">
+    </div>
+
+    <div class="hero__text">
+      <h2 class="hero__subtitle">¡Acompáñame a celebrar!</h2>
+      <h1 class="hero__title">Mi primer añito ¡Galia!</h1>
+
+      <div class="hero__details-wrapper animate__animated animate__fadeIn animate__delay-2s">
+        <div class="hero__detail-item" onclick="/* Agrega aquí la función para abrir Google Maps */" role="button" tabindex="0" aria-label="Ver ubicación del evento">
+          <i class="bi bi-geo-alt" aria-hidden="true"></i>
+          <span>Club Ciclista Juanicó</span>
+        </div>
+        <span class="hero__detail-separator" aria-hidden="true">|</span>
+        <div class="hero__detail-item" onclick="/* Agrega aquí la función para agregar al calendario */" role="button" tabindex="0" aria-label="Agregar al calendario">
+          <i class="bi bi-calendar-check" aria-hidden="true"></i>
+          <span>Sábado 10 de mayo de 2025</span>
+        </div>
+        <span class="hero__detail-separator" aria-hidden="true">|</span>
+        <div class="hero__detail-item" aria-label="Hora del evento">
+          <i class="bi bi-clock" aria-hidden="true"></i>
+          <span>13:00 a 18:00 hs</span>
+        </div>
+      </div>
+
+      <button class="hero__scroll-indicator" onclick="document.getElementById('countdown').scrollIntoView({behavior: 'smooth'})" aria-label="Ir a la cuenta regresiva">
+        <span class="hero__scroll-text">Descubre más</span>
+        <i class="bi bi-chevron-double-down" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Asegúrate de que animate.css esté importado en tu global.css o en este componente
+  // import 'animate.css'; // Si lo importas aquí
+
+  function scrollToSection(sectionId: string) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script>
